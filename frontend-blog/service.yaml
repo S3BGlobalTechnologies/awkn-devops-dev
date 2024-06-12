@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: awkn-blog-ui-service
+  namespace: awkn-dev
+spec:
+  selector:
+    app: awkn-blog-ui
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 3000

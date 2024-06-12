@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: awkn-admin-api-service
+  namespace: awkn-dev
+spec:
+  selector:
+    app: awkn-admin-api
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 5010 

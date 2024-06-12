@@ -1,0 +1,48 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: awkn-ui-test
+  namespace: awkn-dev
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: awkn-ui-test
+  template:
+    metadata:
+      labels:
+        app: awkn-ui-test
+    spec:
+      containers:
+        - name: awkn-ui-test
+          image: awokenin.azurecr.io/awokenin-ui-test:v24
+          ports:
+            - containerPort: 3000
+          env:
+            - name: API_URL
+              value: "https://api.awokenin.com/"
+            - name: API_URL_USER
+              value: "https://api.awokenin.com/"
+            - name: NEXT_PUBLIC_BASE_URL
+              value: "https://api.awokenin.com/api"
+            - name: NEXTAUTH_SECRET
+              value: "af017d04a8083251abdebb81b1fbb498"
+            - name: NEXTAUTH_URL
+              value: "https://test.awokenin.com"
+            - name: KEYCLOAK_CLIENT_ID
+              value: "awokenin-users"
+            - name: KEYCLOAK_CLIENT_SECRET
+              value: "bqUyddLarkkp1cX57cgA3CBkAdZ85Che"
+            - name: KEYCLOAK_ISSUER
+              value: "https://keycloak.awokenin.com/realms/awokenin"
+            - name: UPLOADS_BASE_URL
+              value: "https://api.awokenin.com"
+          resources:
+            limits:
+              cpu: "0.5"
+              memory: "512Mi"
+            requests:
+              cpu: "0.1"
+              memory: "256Mi"
+      imagePullSecrets:
+        - name: acr-secret

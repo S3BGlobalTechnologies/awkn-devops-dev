@@ -1,0 +1,32 @@
+apiVersion: networking.istio.io/v1alpha3
+kind: Gateway
+metadata:
+  name: awokenin-gateway
+  namespace: istio-system
+spec:
+  selector:
+    istio: ingressgateway
+  servers:
+  - port:
+      number: 80
+      name: http
+      protocol: HTTP
+    hosts:
+    - "awokenin.com"
+    - "test.awokenin.com"
+    - "api.awokenin.com"
+    - "www.awokenin.com"
+    - "blogs.awokenin.com"
+  - port:
+      number: 443
+      name: https
+      protocol: HTTPS
+    tls:
+      mode: SIMPLE
+      credentialName: awokenin-ca-tls
+    hosts:
+    - "awokenin.com"
+    - "test.awokenin.com"
+    - "api.awokenin.com"
+    - "www.awokenin.com"
+    - "blogs.awokenin.com"

@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: awkn-ui-test-service
+  namespace: awkn-dev
+spec:
+  selector:
+    app: awkn-ui-test
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 3000

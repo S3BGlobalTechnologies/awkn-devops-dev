@@ -1,0 +1,44 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: awkn-blog-ui
+  namespace: awkn-dev
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: awkn-blog-ui
+  template:
+    metadata:
+      labels:
+        app: awkn-blog-ui
+    spec:
+      containers:
+        - name: awkn-blog-ui
+          image: awokenin.azurecr.io/awokenin-blog:v26.3
+          ports:
+            - containerPort: 3000
+          env:
+            - name: NEXT_PUBLIC_BASE_URL
+              value: "https://blogapi.awokenin.com/api"
+            - name: NEXTAUTH_SECRET
+              value: "oeDsxxt1x2Q2NZLicabr06HSmiBxONzP"
+            - name: NEXTAUTH_URL
+              value: "https://blogs.awokenin.com"
+            - name: KEYCLOAK_CLIENT_ID
+              value: "awokenin-blog"
+            - name: KEYCLOAK_CLIENT_SECRET
+              value: "oeDsxxt1x2Q2NZLicabr06HSmiBxONzP"
+            - name: KEYCLOAK_ISSUER
+              value: "https://keycloak.awokenin.com/realms/awokenin"
+            - name: UPLOADS_BASE_URL
+              value: "https://api.awokenin.com"
+          resources:
+            limits:
+              cpu: "0.5"
+              memory: "512Mi"
+            requests:
+              cpu: "0.1"
+              memory: "256Mi"
+      imagePullSecrets:
+        - name: acr-secret

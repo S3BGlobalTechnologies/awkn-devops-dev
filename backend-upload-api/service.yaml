@@ -1,12 +1,13 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: awokenin-service
+  name: nodeapp-service
   namespace: awkn-dev
 spec:
   selector:
-    app: awokenin
+    app: nodeapp
+  type: ClusterIP
   ports:
     - protocol: TCP
       port: 80
-      targetPort: 80
+      targetPort: 5000

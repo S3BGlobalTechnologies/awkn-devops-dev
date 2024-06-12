@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: awokenin-deployment
+  namespace: awkn-dev
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: awokenin
+  template:
+    metadata:
+      labels:
+        app: awokenin
+    spec:
+      containers:
+        - name: awokenin
+          image: nitishr625/awokenin:1.0
+          ports:
+            - containerPort: 80

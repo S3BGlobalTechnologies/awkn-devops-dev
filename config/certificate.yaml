@@ -1,0 +1,24 @@
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: awokenin-certificate
+  namespace: istio-system
+spec:
+  secretName: awokenin-ca-tls
+  commonName: awokenin.com
+  isCA: false
+  usages:
+    - server auth
+    - client auth
+  duration: 8760h # 365d
+  renewBefore: 360h # 15d
+  dnsNames:
+    - awokenin.com
+    - test.awokenin.com
+    - api.awokenin.com
+    - www.awokenin.com
+    - blogs.awokenin.com
+  issuerRef:
+    name: letsencrypt-production
+    kind: ClusterIssuer
+

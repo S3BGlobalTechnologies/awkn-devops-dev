@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nodeapp-deployment
+  namespace: awkn-dev
+  labels:
+    app: nodeapp
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: nodeapp
+  template:
+    metadata:
+      labels:
+        app: nodeapp
+    spec:
+      containers:
+        - name: nodeserver
+          image: awokenin.azurecr.io/awkn-backend:image.v4
+          ports:
+            - containerPort: 5000
+          env:
+            - name: PORT
+              value: "5000"
+            - name: AWKN_CONNECTION_STRING
+              value: "DefaultEndpointsProtocol=https;AccountName=awknstorage;AccountKey=Hl4Z7DDa5+m5YjsVH9+EV03w8+P47U3zddOji0O1HPzoTCtKWfnS/uvJwtNPyS8D/FefyUGSBp5J+ASt0CxXaw==;EndpointSuffix=core.windows.net"
+            - name: CONTAINER_NAME
+              value: "awkn-image"
+            - name: AWKN_STORAGE_ACCOUNT
+              value: "awknstorage"
+      imagePullSecrets:
+        - name: acr-secret

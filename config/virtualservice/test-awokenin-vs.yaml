@@ -1,0 +1,19 @@
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: awokenin-vs
+  namespace: istio-system
+spec:
+  hosts:
+  - "test.awokenin.com"
+  gateways:
+  - awokenin-gateway
+  http:
+  - match:
+    - uri:
+        prefix: "/"
+    route:
+    - destination:
+        host: awkn-ui-test-service.awkn-dev.svc.cluster.local
+        port:
+          number: 80

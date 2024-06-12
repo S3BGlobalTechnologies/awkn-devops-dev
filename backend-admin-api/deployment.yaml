@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: awkn-api-deployment
+  namespace: awkn-dev
+spec:
+  replicas: 1 
+  selector:
+    matchLabels:
+      app: awkn-admin-api
+  template:
+    metadata:
+      labels:
+        app: awkn-admin-api
+    spec:
+      containers:
+        - name: awkn-admin-api
+          image: awokenin.azurecr.io/awkn-api-backend:v2.2
+          ports:
+            - containerPort: 5010
+          env:
+            - name: PORT
+              value: "5010"
+            - name: ARANGO_URL
+              value: "https://chrome.awokenin.com"
+            - name: ARANGO_USERNAME
+              value: "root"
+            - name: ARANGO_PASSWORD
+              value: "rootpassword"
+            - name: ARANGO_DATABASE_NAME
+              value: "awokenin"
+      imagePullSecrets:
+        - name: acr-secret
