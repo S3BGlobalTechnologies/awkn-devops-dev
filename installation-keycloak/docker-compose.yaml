@@ -1,0 +1,50 @@
+version: "3.9"
+
+services:
+  postgres:
+    image: postgres:16.0
+    container_name: postgres
+    restart: always
+    ports:
+      - "5432:5432"
+    volumes:
+      - ./data:/var/lib/postgresql/data
+    networks:
+      - keycloak-network
+    environment:
+      POSTGRES_USER: $POSTGRES_USER
+      POSTGRES_PASSWORD: $POSTGRES_PASSWORD
+      POSTGRES_DB: $POSTGRES_DB
+  keycloak:
+    image: quay.io/keycloak/keycloak:24.0.4
+    container_name: keycloak
+    restart: always
+    ports:
+      - "8081:8080"
+      - "8443:8443"
+    volumes:
+      - /home/awkn-datastore/app/keycloak/themes:/opt/keycloak/themes
+    depends_on:
+      - postgres
+    command:
+      - start
+    networks:
+          - keycloak-network
+    environment:
+      KC_DB: postgres
+      KC_DB_URL_HOST: postgres
+      KC_DB_URL_DATABSE: $POSTGRES_USER
+      KC_DB_USERNAME: $POSTGRES_DB
+      KC_DB_PASSWORD: $POSTGRES_PASSWORD
+      KC_HOSTNAME_URL: $KC_HOSTNAME_URL
+      KC_HOSTNAME_STRICT_HTTPS: "true"
+      KC_HOSTNAME_STRICT_BACKCHANNEL: "true"
+      KEYCLOAK_ADMIN: admin
+      KEYCLOAK_ADMIN_PASSWORD: $KEYCLOAK_ADMIN_PASSWORD
+      KEYCLOAK_FRONTEND_URL: $KEYCLOAK_FRONTEND_URL
+      KC_PROXY: edge
+      KC_HOSTNAME_ADMIN_URL: $KC_HOSTNAME_URL
+
+networks:
+  keycloak-network:
+    driver: bridge
