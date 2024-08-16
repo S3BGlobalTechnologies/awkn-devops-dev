@@ -1,0 +1,45 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: python-resume-parser
+  namespace: awkn-dev
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: python-resume-parser
+  template:
+    metadata:
+      labels:
+        app: python-resume-parser
+    spec:
+      containers:
+        - name: python-resume-parser
+          image: awokenin.azurecr.io/python-resume-parser:v0.0.3
+          ports:
+            - containerPort: 5000
+          env:
+            - name: ENDPOINT_URL
+              value: "https://awkn-resume-parser.openai.azure.com/"
+            - name: DEPLOYMENT_NAME
+              value: "awkn-parser"
+            - name: BASIC_AUTH_USERNAME
+              value: "awkn-resume-parser"
+            - name: BASIC_AUTH_PASSWORD
+              value: "KZ>ry^3!vG^R6kL1j&s<AfN#£1Shn"
+      imagePullSecrets:
+        - name: acr-secret
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: python-resume-parser
+  namespace: awkn-dev
+spec:
+  selector:
+    app: python-resume-parser
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 5000
+  type: ClusterIP
