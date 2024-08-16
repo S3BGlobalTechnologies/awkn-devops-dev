@@ -15,12 +15,16 @@ spec:
     spec:
       containers:
         - name: awkn-ui-test
-          image: awokenin.azurecr.io/awokenin-ui-test:v0.0.29
+          image: awokenin.azurecr.io/awokenin-ui-test:v64.1.1
           ports:
             - containerPort: 3000
           env:
+            - name: API_URL
+              value: "https://dev.api.awokenin.com/"
+            - name: API_URL_USER
+              value: "https://dev.api.awokenin.com/"
             - name: NEXT_PUBLIC_BASE_URL
-              value: "https://dev.api.awokenin.com"
+              value: "https://dev.api.awokenin.com/api"
             - name: NEXTAUTH_SECRET
               value: "af017d04a8083251abdebb81b1fbb498"
             - name: NEXTAUTH_URL

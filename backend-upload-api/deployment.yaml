@@ -17,17 +17,63 @@ spec:
     spec:
       containers:
         - name: nodeserver
-          image: awokenin.azurecr.io/awkn-backend:image.v4
+          image: awokenin.azurecr.io/awkn-backend:image.v4.5
           ports:
             - containerPort: 5000
           env:
             - name: PORT
               value: "5000"
             - name: AWKN_CONNECTION_STRING
-              value: "DefaultEndpointsProtocol=https;AccountName=awknstorage;AccountKey=Hl4Z7DDa5+m5YjsVH9+EV03w8+P47U3zddOji0O1HPzoTCtKWfnS/uvJwtNPyS8D/FefyUGSBp5J+ASt0CxXaw==;EndpointSuffix=core.windows.net"
+              valueFrom:
+                secretKeyRef:
+                  name: awkn-dev-api-secrets
+                  key: AWKN_CONNECTION_STRING
             - name: CONTAINER_NAME
-              value: "awkn-image"
+              valueFrom:
+                configMapKeyRef:
+                  name: awkn-dev-api-config
+                  key: CONTAINER_NAME
+            - name: VIDEO_CONTAINER_NAME
+              valueFrom:
+                configMapKeyRef:
+                  name: awkn-dev-api-config
+                  key: VIDEO_CONTAINER_NAME
+            - name: RESUME_CONTAINER_NAME
+              valueFrom:
+                configMapKeyRef:
+                  name: awkn-dev-api-config
+                  key: RESUME_CONTAINER_NAME
             - name: AWKN_STORAGE_ACCOUNT
-              value: "awknstorage"
+              valueFrom:
+                configMapKeyRef:
+                  name: awkn-dev-api-config
+                  key: AWKN_STORAGE_ACCOUNT
+            - name: REDIRECT_URL
+              valueFrom:
+                configMapKeyRef:
+                  name: awkn-dev-api-config
+                  key: REDIRECT_URL
+            - name: KEYCLOAK_PUBLIC_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: awkn-dev-api-secrets
+                  key: KEYCLOAK_PUBLIC_KEY
       imagePullSecrets:
         - name: acr-secret
+
+---
+# service.yaml
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: nodeapp-service
+  namespace: awkn-dev
+spec:
+  selector:
+    app: nodeapp
+  type: ClusterIP
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 5000

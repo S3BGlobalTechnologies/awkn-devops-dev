@@ -14,11 +14,15 @@ spec:
   renewBefore: 360h # 15d
   dnsNames:
     - awokenin.com
-    - test.awokenin.com
-    - api.awokenin.com
     - www.awokenin.com
+    - api.awokenin.com
+    - test.awokenin.com
+    - test.api.awokenin.com
     - blogs.awokenin.com
+    - oidc.awokenin.com
+    - tools.awokenin.com
+    - dev.awokenin.com
+    - dev.api.awokenin.com
   issuerRef:
     name: letsencrypt-production
     kind: ClusterIssuer
-

@@ -1,11 +1,11 @@
 apiVersion: networking.istio.io/v1alpha3
 kind: VirtualService
 metadata:
-  name: awokenin-vs
+  name: dev-awokenin-vs
   namespace: istio-system
 spec:
   hosts:
-  - "test.awokenin.com"
+  - "dev.awokenin.com"
   gateways:
   - awokenin-gateway
   http:

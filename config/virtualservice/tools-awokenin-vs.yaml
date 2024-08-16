@@ -1,0 +1,19 @@
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: tools-awokenin-service-vs
+  namespace: istio-system
+spec:
+  hosts:
+    - "tools.awokenin.com"
+  gateways:
+    - awokenin-gateway
+  http:
+    - match:
+        - uri:
+            prefix: "/"
+      route:
+        - destination:
+            host: jenkins.jenkins.svc.cluster.local
+            port:
+              number: 80

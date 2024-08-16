@@ -1,31 +1,26 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: awkn-api-user-deployment
+  name: awkn-api-corporate-page-deployment
   namespace: awkn-dev
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: awkn-user-api
+      app: awkn-corporate-page-api
   template:
     metadata:
       labels:
-        app: awkn-user-api
+        app: awkn-corporate-page-api
     spec:
       containers:
-        - name: awkn-user-api
-          image: awokenin.azurecr.io/awkn-user-backend:v3.3
+        - name: awkn-corporate-page-api
+          image: awokenin.azurecr.io/awkn-corporate-page-backend-dev:v1.22
           ports:
-            - containerPort: 5020
+            - containerPort: 5000
           env:
-            - name: KEYCLOAK_PUBLIC_KEY
-              valueFrom:
-                configMapKeyRef:
-                  name: keycloak-public-key-config
-                  key: KEYCLOAK_PUBLIC_KEY
             - name: PORT
-              value: "5020"
+              value: "5000"
             - name: ARANGO_URL
               value: "https://chrome.awokenin.com"
             - name: ARANGO_USERNAME
@@ -56,8 +51,15 @@ spec:
               value: "awokenin.s3b@gmail.com"
             - name: EMAIL_HOST_PASSWORD
               value: "wtdo anuk ueof batx"
+            - name: BASE_URL
+              value: "https://dev.awokenin.com"
             - name: REDIRECT_URL
               value: "https://dev.awokenin.com/session-expired"
+            - name: KEYCLOAK_PUBLIC_KEY
+              valueFrom:
+                configMapKeyRef:
+                  name: keycloak-public-key-config
+                  key: KEYCLOAK_PUBLIC_KEY
       imagePullSecrets:
         - name: acr-secret
 
@@ -67,12 +69,12 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: awkn-user-api-service
+  name: awkn-corporate-page-api-service
   namespace: awkn-dev
 spec:
   selector:
-    app: awkn-user-api
+    app: awkn-corporate-page-api
   ports:
     - protocol: TCP
       port: 80
-      targetPort: 5020
+      targetPort: 5000

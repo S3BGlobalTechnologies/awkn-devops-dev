@@ -1,26 +1,26 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: awkn-api-socialwall-user-deployment
+  name: awkn-api-blog-deployment
   namespace: awkn-dev
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: awkn-socialwall-user-api
+      app: awkn-blog-api
   template:
     metadata:
       labels:
-        app: awkn-socialwall-user-api
+        app: awkn-blog-api
     spec:
       containers:
-        - name: awkn-socialwall-user-api
-          image: awokenin.azurecr.io/awkn-socialwall-user-backend-dev:v1.7
+        - name: awkn-blog-api
+          image: awokenin.azurecr.io/awkn-backend-blog:v1.7
           ports:
-            - containerPort: 5000
+            - containerPort: 5020
           env:
             - name: PORT
-              value: "5000"
+              value: "5020"
             - name: ARANGO_URL
               value: "https://chrome.awokenin.com"
             - name: ARANGO_USERNAME
@@ -29,13 +29,6 @@ spec:
               value: "rootpassword"
             - name: ARANGO_DATABASE_NAME
               value: "awokenin"
-            - name: REDIRECT_URL
-              value: "https://dev.awokenin.com/session-expired"
-            - name: KEYCLOAK_PUBLIC_KEY
-              valueFrom: 
-                configMapKeyRef: 
-                  name: keycloak-public-key-config
-                  key: KEYCLOAK_PUBLIC_KEY
       imagePullSecrets:
         - name: acr-secret
 
@@ -45,12 +38,12 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: awkn-socialwall-user-api-service
-  namespace: awkn-dev
+  name: awkn-blog-api-service
+  namespace: awkn-test
 spec:
   selector:
-    app: awkn-socialwall-user-api
+    app: awkn-blog-api
   ports:
     - protocol: TCP
       port: 80
-      targetPort: 5000
+      targetPort: 5020

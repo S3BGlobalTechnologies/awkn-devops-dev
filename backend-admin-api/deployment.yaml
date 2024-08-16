@@ -4,7 +4,7 @@ metadata:
   name: awkn-api-deployment
   namespace: awkn-dev
 spec:
-  replicas: 1 
+  replicas: 1
   selector:
     matchLabels:
       app: awkn-admin-api
@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
         - name: awkn-admin-api
-          image: awokenin.azurecr.io/awkn-api-backend:v2.2
+          image: awokenin.azurecr.io/awkn-backend:v5.17
           ports:
             - containerPort: 5010
           env:
@@ -29,5 +29,28 @@ spec:
               value: "rootpassword"
             - name: ARANGO_DATABASE_NAME
               value: "awokenin"
+            - name: REDIRECT_URL
+              value: "https://dev.awokenin.com/session-expired"
+            - name: KEYCLOAK_PUBLIC_KEY
+              valueFrom: 
+                configMapKeyRef: 
+                  name: keycloak-public-key-config
+                  key: KEYCLOAK_PUBLIC_KEY
       imagePullSecrets:
         - name: acr-secret
+
+---
+# service.yaml
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: awkn-admin-api-service
+  namespace: awkn-dev
+spec:
+  selector:
+    app: awkn-admin-api
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 5010

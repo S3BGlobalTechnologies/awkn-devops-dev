@@ -1,31 +1,26 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: awkn-api-user-deployment
+  name: awkn-resume-parser-api
   namespace: awkn-dev
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: awkn-user-api
+      app: awkn-resume-parser-api
   template:
     metadata:
       labels:
-        app: awkn-user-api
+        app: awkn-resume-parser-api
     spec:
       containers:
-        - name: awkn-user-api
-          image: awokenin.azurecr.io/awkn-user-backend:v3.3
+        - name: awkn-resume-parser-api
+          image: awokenin.azurecr.io/awkn-resume-parser-api:v5
           ports:
-            - containerPort: 5020
+            - containerPort: 5000
           env:
-            - name: KEYCLOAK_PUBLIC_KEY
-              valueFrom:
-                configMapKeyRef:
-                  name: keycloak-public-key-config
-                  key: KEYCLOAK_PUBLIC_KEY
             - name: PORT
-              value: "5020"
+              value: "5000"
             - name: ARANGO_URL
               value: "https://chrome.awokenin.com"
             - name: ARANGO_USERNAME
@@ -34,6 +29,8 @@ spec:
               value: "rootpassword"
             - name: ARANGO_DATABASE_NAME
               value: "awokenin"
+            - name: ARANGO_COLLECTION_NAME
+              value: "resume-data"
             - name: KEYCLOAK_CLIENT_ID
               value: "awokenin-blog"
             - name: KEYCLOAK_URL
@@ -56,23 +53,27 @@ spec:
               value: "awokenin.s3b@gmail.com"
             - name: EMAIL_HOST_PASSWORD
               value: "wtdo anuk ueof batx"
-            - name: REDIRECT_URL
-              value: "https://dev.awokenin.com/session-expired"
+          resources:
+            limits:
+              cpu: "0.5"
+              memory: "512Mi"
+            requests:
+              cpu: "0.1"
+              memory: "256Mi"
       imagePullSecrets:
         - name: acr-secret
 
 ---
-# service.yaml
 
 apiVersion: v1
 kind: Service
 metadata:
-  name: awkn-user-api-service
+  name: awkn-resume-parser-api-service
   namespace: awkn-dev
 spec:
   selector:
-    app: awkn-user-api
+    app: awkn-resume-parser-api
   ports:
     - protocol: TCP
       port: 80
-      targetPort: 5020
+      targetPort: 5000
