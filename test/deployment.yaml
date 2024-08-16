@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
       - name: testapp
-        image: awokenin.azurecr.io/awokenin-testing-build:dev-v23
+        image: awokenin.azurecr.io/awokenin-testing-build:dev-v27
         ports:
         - containerPort: 3000
       imagePullSecrets:
