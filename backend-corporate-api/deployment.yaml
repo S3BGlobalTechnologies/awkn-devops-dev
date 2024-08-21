@@ -52,7 +52,7 @@ spec:
             - name: EMAIL_HOST_PASSWORD
               value: "wtdo anuk ueof batx"
             - name: BASE_URL
-              value: "https://dev.awokenin.com"
+              value: "https://test.awokenin.com"
             - name: REDIRECT_URL
               value: "https://dev.awokenin.com/session-expired"
             - name: KEYCLOAK_PUBLIC_KEY
