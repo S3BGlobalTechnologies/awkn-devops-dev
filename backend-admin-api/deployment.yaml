@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
         - name: awkn-admin-api
-          image: awokenin.azurecr.io/awkn-backend:v5.17
+          image: awokenin.azurecr.io/awkn-backend:dev-v2
           ports:
             - containerPort: 5010
           env:
