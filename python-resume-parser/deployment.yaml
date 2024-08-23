@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
         - name: python-resume-parser
-          image: awokenin.azurecr.io/python-resume-parser:dev-v1
+          image: awokenin.azurecr.io/python-resume-parser:dev-v2
           ports:
             - containerPort: 5000
           env:
