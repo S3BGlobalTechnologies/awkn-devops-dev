@@ -31,6 +31,20 @@ spec:
               value: "awokenin"
             - name: REDIRECT_URL
               value: "https://dev.awokenin.com/session-expired"
+            - name: KEYCLOAK_CLIENT_ID
+              value: "awokenin-users"
+            - name: KEYCLOAK_URL
+              value: "https://keycloak.awokenin.com"
+            - name: KEYCLOAK_ADMIN_CLIENT_ID
+              value: "admin-cli"
+            - name: KEYCLOAK_ADMIN_USERNAME
+              value: "admin"
+            - name: KEYCLOAK_ADMIN_PASSWORD
+              value: "Password123"
+            - name: KEYCLOAK_ADMIN_GRANT_TYPE
+              value: "password"
+            - name: REALM_NAME
+              value: "awokenin"
             - name: KEYCLOAK_PUBLIC_KEY
               valueFrom: 
                 configMapKeyRef: 
