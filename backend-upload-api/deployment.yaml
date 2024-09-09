@@ -24,40 +24,19 @@ spec:
             - name: PORT
               value: "5000"
             - name: AWKN_CONNECTION_STRING
-              valueFrom:
-                secretKeyRef:
-                  name: awkn-dev-api-secrets
-                  key: AWKN_CONNECTION_STRING
+              value: "DefaultEndpointsProtocol=https;AccountName=awknstorage;AccountKey=Hl4Z7DDa5+m5YjsVH9+EV03w8+P47U3zddOji0O1HPzoTCtKWfnS/uvJwtNPyS8D/FefyUGSBp5J+ASt0CxXaw==;EndpointSuffix=core.windows.net"
             - name: CONTAINER_NAME
-              valueFrom:
-                configMapKeyRef:
-                  name: awkn-dev-api-config
-                  key: CONTAINER_NAME
+              value: "awkn-image"
             - name: VIDEO_CONTAINER_NAME
-              valueFrom:
-                configMapKeyRef:
-                  name: awkn-dev-api-config
-                  key: VIDEO_CONTAINER_NAME
+              value: "awkn-video"
             - name: RESUME_CONTAINER_NAME
-              valueFrom:
-                configMapKeyRef:
-                  name: awkn-dev-api-config
-                  key: RESUME_CONTAINER_NAME
+              value: "awkn-resume"
             - name: AWKN_STORAGE_ACCOUNT
-              valueFrom:
-                configMapKeyRef:
-                  name: awkn-dev-api-config
-                  key: AWKN_STORAGE_ACCOUNT
+              value: "awknstorage"
             - name: REDIRECT_URL
-              valueFrom:
-                configMapKeyRef:
-                  name: awkn-dev-api-config
-                  key: REDIRECT_URL
+              value: "https://test.awokenin.com/session-expired"
             - name: KEYCLOAK_PUBLIC_KEY
-              valueFrom:
-                secretKeyRef:
-                  name: awkn-dev-api-secrets
-                  key: KEYCLOAK_PUBLIC_KEY
+              value: "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAsIQLG2rqYyRpJqoW3Id5vbMhXGgijF6/kNSLj5W/YD3/Din8lWfXsTCdtTbtYPrl4rbVugO0CC2v/O/lNw3dpQh4nfsYu/f0qehSTbr9P5hYE0uh8t7bXExSZHJbAoO9OeXQAol8WSHePexpH/S+5ETJFJWcA3nZdilTm9CxxjUo6wRWbpefSj+XTsK9bylS6YPYCzb2AaabZmdcSekWf/a9S+6vMaqSgWkwODzUPuw96W4BWVQ9yBtA/XldxowDuO/Irs8Q1eHtfTrM2BJe1XZxrs07negKGZEP/3YcCExfSq4A7ON5htTMprz5JzolxepRGZKOI24QyHSofO7zXwIDAQAB"
       imagePullSecrets:
         - name: acr-secret
 
