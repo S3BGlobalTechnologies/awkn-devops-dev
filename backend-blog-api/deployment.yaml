@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
         - name: awkn-blog-api
-          image: awokenin.azurecr.io/awkn-backend-blog:v1.7
+          image: awokenin.azurecr.io/awkn-backend-blog:dev-v2
           ports:
             - containerPort: 5020
           env:
