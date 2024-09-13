@@ -44,7 +44,7 @@ spec:
             - name: NEXT_PUBLIC_KEYCLOAK_CLIENT_ID
               value: "awokenin-users"
             - name: NEXT_PUBLIC_KEYCLOAK_REDIRECT_URI
-              value: "https://dev.awokenin.com/feed"
+              value: "https://dev.awokenin.com/tea-buzz"
           resources:
             limits:
               cpu: "1"
