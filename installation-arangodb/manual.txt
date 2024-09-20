@@ -1,0 +1,8 @@
+docker run -d \
+  --name arangodb_db_container \
+  --restart unless-stopped \
+  -e ARANGO_ROOT_PASSWORD=rootpassword \
+  -p 8529:8529 \
+  -v arangodb_data_container:/var/lib/arangodb3 \
+  -v arangodb_apps_data_container:/var/lib/arangodb3-apps \
+  arangodb:latest
