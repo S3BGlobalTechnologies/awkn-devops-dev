@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
         - name: awkn-ui-test
-          image: awokenin.azurecr.io/awokenin-ui-test:dev-v122
+          image: awokenin.azurecr.io/awokenin-ui-test:dev-v124
           ports:
             - containerPort: 3000
           env:
