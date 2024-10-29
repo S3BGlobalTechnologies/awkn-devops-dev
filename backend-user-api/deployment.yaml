@@ -44,6 +44,10 @@ spec:
               value: "admin"
             - name: KEYCLOAK_ADMIN_PASSWORD
               value: "Password123"
+            - name: KEYCLOAK_CLIENT_ID
+              value: "awokenin-users"
+            - name: KEYCLOAK_CLIENT_SECRET
+              value: "bqUyddLarkkp1cX57cgA3CBkAdZ85Che"
             - name: KEYCLOAK_ADMIN_GRANT_TYPE
               value: "password"
             - name: REALM_NAME
