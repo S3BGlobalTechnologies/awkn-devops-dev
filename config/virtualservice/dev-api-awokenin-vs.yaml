@@ -89,3 +89,11 @@ spec:
             host: python-resume-parser.awkn-dev.svc.cluster.local
             port:
               number: 80
+    - match:
+        - uri:
+            prefix: "/socket"
+      route:
+        - destination:
+            host: awkn-socket-io-backend-service.awkn-dev.svc.cluster.local
+            port:
+              number: 80
