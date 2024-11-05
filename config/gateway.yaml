@@ -15,13 +15,16 @@ spec:
         - "awokenin.com"
         - "www.awokenin.com"
         - "api.awokenin.com"
+        - "socket.awokenin.com"
         - "test.awokenin.com"
         - "test.api.awokenin.com"
+        - "test.socket.awokenin.com"
         - "blogs.awokenin.com"
         - "oidc.awokenin.com"
         - "tools.awokenin.com"
         - "dev.awokenin.com"
         - "dev.api.awokenin.com"
+        - "dev.socket.awokenin.com"
     - port:
         number: 443
         name: https
@@ -33,11 +36,14 @@ spec:
         - "awokenin.com"
         - "www.awokenin.com"
         - "api.awokenin.com"
+        - "socket.awokenin.com"
         - "test.awokenin.com"
         - "test.api.awokenin.com"
+        - "test.socket.awokenin.com"
         - "blogs.awokenin.com"
         - "oidc.awokenin.com"
         - "tools.awokenin.com"
         - "dev.awokenin.com"
         - "dev.api.awokenin.com"
+        - "dev.socket.awokenin.com"
 
