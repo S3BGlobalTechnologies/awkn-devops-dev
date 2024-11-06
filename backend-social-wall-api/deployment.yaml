@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
         - name: awkn-socialwall-user-api
-          image: awokenin.azurecr.io/awkn-socialwall-user-backend-dev:dev-v27
+          image: awokenin.azurecr.io/awkn-socialwall-user-backend-dev:dev-v28
           ports:
             - containerPort: 5000
           env:
