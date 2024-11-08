@@ -45,6 +45,14 @@ spec:
               value: "password"
             - name: REALM_NAME
               value: "awokenin"
+            - name: EMAIL_HOST
+              value: "smtp.gmail.com"
+            - name: EMAIL_PORT
+              value: "587"
+            - name: EMAIL_HOST_USER
+              value: "awokenin.s3b@gmail.com"
+            - name: EMAIL_HOST_PASSWORD
+              value: "wtdo anuk ueof batx"
             - name: KEYCLOAK_PUBLIC_KEY
               valueFrom: 
                 configMapKeyRef: 
