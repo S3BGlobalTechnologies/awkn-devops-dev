@@ -45,7 +45,7 @@ spec:
               value: "awokenin-users"
             - name: NEXT_PUBLIC_KEYCLOAK_REDIRECT_URI
               value: "https://dev.awokenin.com/tea-buzz"
-            - name: NEXT_SOCKET_BASE_URL
+            - name: NEXT_PUBLIC_SOCKET_BASE_URL
               value: "https://dev.socket.awokenin.com"
           resources:
             limits:
