@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
         - name: awkn-socket-io-backend
-          image: awokenin.azurecr.io/awkn-socket-io-backend:dev-v19
+          image: awokenin.azurecr.io/awkn-socket-io-backend:dev-v20
           ports:
             - containerPort: 4000
           env:
