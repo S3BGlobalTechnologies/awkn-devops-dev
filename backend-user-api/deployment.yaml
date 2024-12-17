@@ -34,8 +34,6 @@ spec:
               value: "rootpassword"
             - name: ARANGO_DATABASE_NAME
               value: "awokenin"
-            - name: KEYCLOAK_CLIENT_ID
-              value: "awokenin-user"
             - name: KEYCLOAK_URL
               value: "https://oidc.buzzbreach.com"
             - name: KEYCLOAK_ADMIN_CLIENT_ID
