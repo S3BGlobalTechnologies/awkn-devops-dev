@@ -5,9 +5,9 @@ metadata:
   namespace: istio-system
 spec:
   hosts:
-  - "dev.socket.awokenin.com"
+  - "dev.socket.buzzbreach.com"
   gateways:
-  - awokenin-gateway
+  - buzzbreach-gateway
   http:
   - match:
     - uri:
