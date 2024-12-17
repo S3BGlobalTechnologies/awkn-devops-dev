@@ -24,7 +24,7 @@ spec:
             - name: PORT
               value: "5000"
             - name: ARANGO_URL
-              value: "https://chrome.awokenin.com"
+              value: "https://db.buzzbreach.com"
             - name: ARANGO_USERNAME
               value: "root"
             - name: ARANGO_PASSWORD
@@ -32,7 +32,7 @@ spec:
             - name: ARANGO_DATABASE_NAME
               value: "awokenin"
             - name: REDIRECT_URL
-              value: "https://dev.awokenin.com/session-expired"
+              value: "https://dev.buzzbreach.com/session-expired"
             - name: KEYCLOAK_PUBLIC_KEY
               valueFrom: 
                 configMapKeyRef: 
