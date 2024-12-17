@@ -27,7 +27,7 @@ spec:
             - name: PORT
               value: "5020"
             - name: ARANGO_URL
-              value: "https://chrome.awokenin.com"
+              value: "https://db.buzzbreach.com"
             - name: ARANGO_USERNAME
               value: "root"
             - name: ARANGO_PASSWORD
@@ -37,7 +37,7 @@ spec:
             - name: KEYCLOAK_CLIENT_ID
               value: "awokenin-user"
             - name: KEYCLOAK_URL
-              value: "https://keycloak.awokenin.com"
+              value: "https://oidc.buzzbreach.com"
             - name: KEYCLOAK_ADMIN_CLIENT_ID
               value: "admin-cli"
             - name: KEYCLOAK_ADMIN_USERNAME
@@ -61,7 +61,7 @@ spec:
             - name: EMAIL_HOST_PASSWORD
               value: "wtdo anuk ueof batx"
             - name: REDIRECT_URL
-              value: "https://dev.awokenin.com/session-expired"
+              value: "https://dev.buzzbreach.com/session-expired"
       imagePullSecrets:
         - name: acr-secret
 
