@@ -22,7 +22,7 @@ spec:
             - name: PORT
               value: "5020"
             - name: ARANGO_URL
-              value: "https://chrome.awokenin.com"
+              value: "https://db.buzzbreach.com"
             - name: ARANGO_USERNAME
               value: "root"
             - name: ARANGO_PASSWORD
