@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
         - name: awkn-corporate-page-api
-          image: awokenin.azurecr.io/awkn-corporate-page-backend-dev:dev-v49
+          image: awokenin.azurecr.io/awkn-corporate-page-backend-dev:dev-v50
           ports:
             - containerPort: 5000
           env:
