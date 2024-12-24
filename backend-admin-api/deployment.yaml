@@ -46,13 +46,13 @@ spec:
             - name: REALM_NAME
               value: "awokenin"
             - name: EMAIL_HOST
-              value: "smtp.gmail.com"
+              value: "chi210.greengeeks.net"
             - name: EMAIL_PORT
-              value: "587"
+              value: "465"
             - name: EMAIL_HOST_USER
-              value: "awokenin.s3b@gmail.com"
+              value: "info@buzzbreach.com"
             - name: EMAIL_HOST_PASSWORD
-              value: "wtdo anuk ueof batx"
+              value: "Albator12786$"
             - name: KEYCLOAK_PUBLIC_KEY
               valueFrom: 
                 configMapKeyRef: 
