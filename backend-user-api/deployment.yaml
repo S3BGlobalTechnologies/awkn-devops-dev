@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
         - name: awkn-user-api
-          image: awokenin.azurecr.io/awkn-user-backend:dev-v79
+          image: awokenin.azurecr.io/awkn-user-backend:dev-v80
           ports:
             - containerPort: 5020
           env:
